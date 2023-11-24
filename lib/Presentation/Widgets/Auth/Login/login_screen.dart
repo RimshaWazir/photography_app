@@ -99,15 +99,15 @@ class LoginScreen extends StatelessWidget {
         text: AppStrings.login,
         textcolor: AppColors.whiteColor,
         ontap: () {
-          Navigate.push(
+          Navigate.pushReplacement(
             context,
-            const HomeScreen(),
+            HomeScreen(),
           );
         },
       ),
       25.y,
       Button(
-        border: Border.all(),
+        border: Border.all(color: AppColors.greyColor),
         color: Colors.transparent,
         text: AppStrings.signUp,
         textcolor: AppColors.blackColor,

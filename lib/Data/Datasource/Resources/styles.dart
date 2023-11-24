@@ -25,6 +25,6 @@ class Styles {
         letterSpacing: letterSpacing ?? 0,
         color: color ?? AppColors.blackColor,
         fontFamily: "Circular Std",
-        fontWeight: fontWeight ?? FontWeight.normal);
+        fontWeight: fontWeight ?? FontWeight.w500);
   }
 }
