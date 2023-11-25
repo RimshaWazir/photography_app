@@ -11,6 +11,7 @@ import 'package:task_2/Data/Datasource/Resources/styles.dart';
 import 'package:task_2/Presentation/Common/custom_text_field.dart';
 import 'package:task_2/Presentation/Widgets/Auth/Componenet/button.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:task_2/Presentation/Widgets/Home/Booking/service/service.dart';
 
 class BookingScreen extends StatefulWidget {
   const BookingScreen({super.key});
@@ -171,7 +172,12 @@ class _BookingScreenState extends State<BookingScreen> {
                   ),
                   10.y,
                   Button(
-                      ontap: () {},
+                      ontap: () {
+                        Navigate.push(
+                          context,
+                          const ServiceScreen(),
+                        );
+                      },
                       color: AppColors.blue,
                       text: AppStrings.book,
                       textcolor: AppColors.whiteColor)

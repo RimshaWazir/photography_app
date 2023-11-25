@@ -58,7 +58,6 @@ class _DetailScreenState extends State<DetailScreen> {
             SliverAppBar(
               automaticallyImplyLeading: false,
               expandedHeight: 0.24.sh,
-              pinned: true,
               elevation: 0,
               backgroundColor: Colors.transparent,
               flexibleSpace: FlexibleSpaceBar(

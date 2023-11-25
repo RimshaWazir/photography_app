@@ -9,6 +9,7 @@ import 'package:task_2/Presentation/Widgets/Auth/Componenet/button.dart';
 import 'package:task_2/Presentation/Widgets/Home/Component/icon_avatar.dart';
 import 'package:task_2/Presentation/Widgets/Home/detail_screen.dart';
 
+// ignore: must_be_immutable
 class VendorsAndPhotographerColumn extends StatelessWidget {
   VendorsAndPhotographerColumn({
     super.key,
