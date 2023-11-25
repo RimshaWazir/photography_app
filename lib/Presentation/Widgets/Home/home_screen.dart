@@ -190,7 +190,7 @@ class HomeScreen extends StatelessWidget {
                             ontap: () {
                               Navigate.push(
                                 context,
-                                BookingScreen(),
+                                const BookingScreen(),
                               );
                             },
                           )

@@ -51,371 +51,147 @@ class _DetailScreenState extends State<DetailScreen> {
       );
     });
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Stack(
-                children: [
-                  Container(
-                    height: 0.3.sh,
-                    width: 1.sw,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage(widget.selectedImage!),
-                      ),
-                    ),
-                    child: PageView.builder(
-                      physics: const BouncingScrollPhysics(),
-                      controller: controller,
-                      itemCount: pages.length,
-                      itemBuilder: (_, index) {
-                        return pages[index % pages.length];
-                      },
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 20.0,
-                    left: 160,
-                    right: 0,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        SmoothPageIndicator(
-                          controller: controller,
-                          count: 2,
-                          effect: const WormEffect(
-                            activeDotColor: AppColors.whiteColor,
-                            dotHeight: 10,
-                            dotWidth: 10,
-                            type: WormType.thinUnderground,
-                          ),
-                        ),
-                        const Spacer(),
-                        Container(
-                          height: 27.sp,
-                          width: 55.sp,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4),
-                              color: AppColors.whiteColor),
-                          child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 9),
-                              child: Center(
-                                child: Text(
-                                  "1/${pages.length.toString()}",
-                                  style: Styles.circularStd(context,
-                                      fontSize: 14, color: AppColors.blue),
-                                ),
-                              )),
-                        ),
-                        14.x
-                      ],
-                    ),
-                  ),
-                  Positioned(
-                      top: 5,
-                      left: 10,
-                      right: 0,
-                      child: Row(children: [
-                        IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.arrow_back,
-                              color: AppColors.whiteColor,
-                            )),
-                        const Spacer(),
-                        IconAvatar(
-                          icons: Icons.share_outlined,
-                          ontap: () {},
-                        ),
-                        14.x,
-                        IconAvatar(
-                          icons: Icons.favorite_outline_outlined,
-                          ontap: () {},
-                        ),
-                        14.x,
-                      ])),
-                ],
+      body: NestedScrollView(
+        physics: const BouncingScrollPhysics(),
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return [
+            SliverAppBar(
+              automaticallyImplyLeading: false,
+              expandedHeight: 0.24.sh,
+              pinned: true,
+              elevation: 0,
+              backgroundColor: Colors.transparent,
+              flexibleSpace: FlexibleSpaceBar(
+                background: Image.asset(
+                  widget.selectedImage!,
+                  fit: BoxFit.cover,
+                ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    20.y,
-                    Text(
-                      AppStrings.enchant,
-                      style: Styles.circularStd(
-                        context,
-                        fontSize: 20,
-                      ),
-                    ),
-                    6.y,
-                    Text(
-                      AppStrings.islamabad,
-                      style: Styles.circularStd(
-                        context,
-                        fontSize: 14,
-                      ),
-                    ),
-                    6.y,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        const Icon(
-                          Icons.star,
-                          color: Colors.amber,
+            )
+          ];
+        },
+        body: SafeArea(
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        AppStrings.enchant,
+                        style: Styles.circularStd(
+                          context,
+                          fontSize: 20,
                         ),
-                        8.x,
-                        Text(
-                          AppStrings.review,
-                          style: Styles.circularStd(
-                            context,
-                            fontSize: 14,
-                          ),
-                        ),
-                      ],
-                    ),
-                    20.y,
-                    Text(
-                      AppStrings.aboutUs,
-                      style: Styles.circularStd(
-                        context,
-                        fontSize: 18,
                       ),
-                    ),
-                    Text(
-                      AppStrings.discription,
-                      maxLines: showMore ? null : 7,
-                      overflow: TextOverflow.ellipsis,
-                      style: Styles.circularStd(
-                        context,
-                        fontSize: 14,
-                        color: AppColors.blackColor.withOpacity(0.8),
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        setState(() {
-                          showMore = !showMore;
-                        });
-                      },
-                      child: Text(
-                        showMore ? AppStrings.less : AppStrings.more,
+                      6.y,
+                      Text(
+                        AppStrings.islamabad,
                         style: Styles.circularStd(
                           context,
                           fontSize: 14,
-                          color: AppColors.blue,
                         ),
                       ),
-                    ),
-                    30.y,
-                    Text(
-                      AppStrings.album,
-                      style: Styles.circularStd(
-                        context,
-                        fontSize: 18,
-                      ),
-                    ),
-                    30.y,
-                    GridView.builder(
-                      physics: const BouncingScrollPhysics(),
-                      shrinkWrap: true,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 8.0,
-                        mainAxisSpacing: 8.0,
-                      ),
-                      itemCount: 4,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: Container(
-                                height: 0.20.sh,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    image: DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image:
-                                            AssetImage(cardImageList[index]))),
-                              ),
-                            ),
-                            Text(
-                              gridviewText[index],
-                              style: Styles.circularStd(
-                                context,
-                                fontSize: 16,
-                              ),
-                            ),
-                            Text(
-                              AppStrings.islamabad,
-                              style: Styles.circularStd(context,
-                                  fontSize: 12,
-                                  color: AppColors.blackColor.withOpacity(0.8)),
-                            ),
-                          ],
-                        );
-                      },
-                    ),
-                    18.y,
-                    Button(
-                      border: Border.all(color: AppColors.greyColor),
-                      color: Colors.transparent,
-                      text: AppStrings.veiewAll,
-                      textcolor: AppColors.greyColor,
-                      ontap: () {},
-                    ),
-                    18.y,
-                    Text(
-                      AppStrings.reviews,
-                      style: Styles.circularStd(context,
-                          fontSize: 18,
-                          color: AppColors.blackColor.withOpacity(0.8)),
-                    ),
-                    17.y,
-                    Align(
-                      alignment: Alignment.center,
-                      child: Column(
+                      6.y,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text(
-                            widget.ratingValue.toString(),
-                            style: Styles.circularStd(context,
-                                fontSize: 30,
-                                color: AppColors.blackColor.withOpacity(0.8)),
+                          const Icon(
+                            Icons.star,
+                            color: Colors.amber,
                           ),
-                          10.y,
-                          RatingBar.builder(
-                            initialRating: widget.ratingValue,
-                            minRating: 1,
-                            itemSize: 30,
-                            glow: false,
-                            direction: Axis.horizontal,
-                            allowHalfRating: true,
-                            itemCount: 5,
-                            itemPadding:
-                                const EdgeInsets.symmetric(horizontal: 1.0),
-                            itemBuilder: (context, _) => const Icon(Icons.star,
-                                color: Colors.amber, size: 12),
-                            onRatingUpdate: (rating) {
-                              setState(() {
-                                widget.ratingValue = rating;
-                              });
-                            },
-                          ),
-                          4.y,
+                          8.x,
                           Text(
-                            "Based on 51 reviews",
-                            style: Styles.circularStd(context,
-                                fontSize: 14,
-                                color: AppColors.blackColor.withOpacity(0.8)),
+                            AppStrings.review,
+                            style: Styles.circularStd(
+                              context,
+                              fontSize: 14,
+                            ),
                           ),
                         ],
                       ),
-                    ),
-                    20.y,
-                    RatingRow(
-                      value: 5.0,
-                      text: "(543 reviews)",
-                    ),
-                    RatingRow(
-                      value: 4.0,
-                      text: "(231 reviews)",
-                    ),
-                    RatingRow(
-                      value: 3.0,
-                      text: "(167 reviews)",
-                    ),
-                    RatingRow(
-                      value: 2.0,
-                      text: "(82 reviews)",
-                    ),
-                    RatingRow(
-                      value: 1.0,
-                      text: "(14 reviews)",
-                    ),
-                    29.y,
-                    SizedBox(
-                      width: 2.sw,
-                      height: 0.4.sh,
-                      child: ListView.separated(
+                      20.y,
+                      Text(
+                        AppStrings.aboutUs,
+                        style: Styles.circularStd(
+                          context,
+                          fontSize: 18,
+                        ),
+                      ),
+                      Text(
+                        AppStrings.discription,
+                        maxLines: showMore ? null : 7,
+                        overflow: TextOverflow.ellipsis,
+                        style: Styles.circularStd(
+                          context,
+                          fontSize: 14,
+                          color: AppColors.blackColor.withOpacity(0.8),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          setState(() {
+                            showMore = !showMore;
+                          });
+                        },
+                        child: Text(
+                          showMore ? AppStrings.less : AppStrings.more,
+                          style: Styles.circularStd(
+                            context,
+                            fontSize: 14,
+                            color: AppColors.blue,
+                          ),
+                        ),
+                      ),
+                      30.y,
+                      Text(
+                        AppStrings.album,
+                        style: Styles.circularStd(
+                          context,
+                          fontSize: 18,
+                        ),
+                      ),
+                      30.y,
+                      GridView.builder(
                         physics: const BouncingScrollPhysics(),
-                        itemCount: 2,
-                        separatorBuilder: (BuildContext context, int index) =>
-                            const Divider(),
+                        shrinkWrap: true,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 8.0,
+                          mainAxisSpacing: 8.0,
+                        ),
+                        itemCount: 4,
                         itemBuilder: (BuildContext context, int index) {
                           return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(
-                                width: 2.sw,
-                                height: 0.1.sh,
-                                child: ListTile(
-                                  trailing: Text(
-                                    "2 days ago",
-                                    style: Styles.circularStd(context,
-                                        fontSize: 14,
-                                        color: AppColors.blackColor
-                                            .withOpacity(0.8)),
-                                  ),
-                                  minVerticalPadding: 10,
-                                  leading: CircleAvatar(
-                                    backgroundColor: Colors.transparent,
-                                    maxRadius: 27.r,
-                                    backgroundImage: AssetImage(
-                                      cardImageList[index],
-                                    ),
-                                  ),
-                                  title: Text(
-                                    "Sarah Johnson",
-                                    style: Styles.circularStd(context,
-                                        fontSize: 14,
-                                        color: AppColors.blackColor
-                                            .withOpacity(0.8)),
-                                  ),
-                                  subtitle: Row(
-                                    children: [
-                                      RatingBar.builder(
-                                        glow: false,
-                                        initialRating: widget.ratingValue,
-                                        minRating: 1,
-                                        itemSize: 20,
-                                        direction: Axis.horizontal,
-                                        allowHalfRating: true,
-                                        itemCount: 5,
-                                        itemPadding: const EdgeInsets.symmetric(
-                                            horizontal: 1.0),
-                                        itemBuilder: (context, _) => const Icon(
-                                            Icons.star,
-                                            color: Colors.amber,
-                                            size: 5),
-                                        onRatingUpdate: (rating) {
-                                          setState(() {
-                                            widget.ratingValue = rating;
-                                          });
-                                          print(rating);
-                                        },
-                                      ),
-                                      Text(
-                                        widget.ratingValue.toString(),
-                                        style: Styles.circularStd(context,
-                                            fontSize: 14,
-                                            color: AppColors.blackColor
-                                                .withOpacity(0.8)),
-                                      ),
-                                    ],
-                                  ),
+                              Expanded(
+                                child: Container(
+                                  height: 0.20.sh,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12),
+                                      image: DecorationImage(
+                                          fit: BoxFit.cover,
+                                          image: AssetImage(
+                                              cardImageList[index]))),
                                 ),
                               ),
                               Text(
-                                "CaptureSphere Studios' booking service is a game-changer! Easy, efficient, and the resulting photos were simply stunning. Highly recommend for a seamless experience.",
+                                gridviewText[index],
+                                style: Styles.circularStd(
+                                  context,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              Text(
+                                AppStrings.islamabad,
                                 style: Styles.circularStd(context,
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     color:
                                         AppColors.blackColor.withOpacity(0.8)),
                               ),
@@ -423,21 +199,183 @@ class _DetailScreenState extends State<DetailScreen> {
                           );
                         },
                       ),
-                    ),
-                    40.y,
-                    Button(
-                      color: AppColors.blue,
-                      text: 'Book Now',
-                      textcolor: AppColors.whiteColor,
-                      ontap: () {
-                        Navigate.push(context, BookingScreen());
-                      },
-                    ),
-                    40.y,
-                  ],
-                ),
-              )
-            ],
+                      18.y,
+                      Button(
+                        border: Border.all(color: AppColors.greyColor),
+                        color: Colors.transparent,
+                        text: AppStrings.veiewAll,
+                        textcolor: AppColors.greyColor,
+                        ontap: () {},
+                      ),
+                      18.y,
+                      Text(
+                        AppStrings.reviews,
+                        style: Styles.circularStd(context,
+                            fontSize: 18,
+                            color: AppColors.blackColor.withOpacity(0.8)),
+                      ),
+                      17.y,
+                      Align(
+                        alignment: Alignment.center,
+                        child: Column(
+                          children: [
+                            Text(
+                              widget.ratingValue.toString(),
+                              style: Styles.circularStd(context,
+                                  fontSize: 30,
+                                  color: AppColors.blackColor.withOpacity(0.8)),
+                            ),
+                            10.y,
+                            RatingBar.builder(
+                              initialRating: widget.ratingValue,
+                              minRating: 1,
+                              itemSize: 30,
+                              glow: false,
+                              direction: Axis.horizontal,
+                              allowHalfRating: true,
+                              itemCount: 5,
+                              itemPadding:
+                                  const EdgeInsets.symmetric(horizontal: 1.0),
+                              itemBuilder: (context, _) => const Icon(
+                                  Icons.star,
+                                  color: Colors.amber,
+                                  size: 12),
+                              onRatingUpdate: (rating) {
+                                setState(() {
+                                  widget.ratingValue = rating;
+                                });
+                              },
+                            ),
+                            4.y,
+                            Text(
+                              "Based on 51 reviews",
+                              style: Styles.circularStd(context,
+                                  fontSize: 14,
+                                  color: AppColors.blackColor.withOpacity(0.8)),
+                            ),
+                          ],
+                        ),
+                      ),
+                      20.y,
+                      RatingRow(
+                        value: 5.0,
+                        text: "(543 reviews)",
+                      ),
+                      RatingRow(
+                        value: 4.0,
+                        text: "(231 reviews)",
+                      ),
+                      RatingRow(
+                        value: 3.0,
+                        text: "(167 reviews)",
+                      ),
+                      RatingRow(
+                        value: 2.0,
+                        text: "(82 reviews)",
+                      ),
+                      RatingRow(
+                        value: 1.0,
+                        text: "(14 reviews)",
+                      ),
+                      29.y,
+                      SizedBox(
+                        width: 2.sw,
+                        height: 0.4.sh,
+                        child: ListView.separated(
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: 2,
+                          separatorBuilder: (BuildContext context, int index) =>
+                              const Divider(),
+                          itemBuilder: (BuildContext context, int index) {
+                            return Column(
+                              children: [
+                                SizedBox(
+                                  width: 2.sw,
+                                  height: 0.1.sh,
+                                  child: ListTile(
+                                    trailing: Text(
+                                      "2 days ago",
+                                      style: Styles.circularStd(context,
+                                          fontSize: 14,
+                                          color: AppColors.blackColor
+                                              .withOpacity(0.8)),
+                                    ),
+                                    minVerticalPadding: 10,
+                                    leading: CircleAvatar(
+                                      backgroundColor: Colors.transparent,
+                                      maxRadius: 27.r,
+                                      backgroundImage: AssetImage(
+                                        cardImageList[index],
+                                      ),
+                                    ),
+                                    title: Text(
+                                      "Sarah Johnson",
+                                      style: Styles.circularStd(context,
+                                          fontSize: 14,
+                                          color: AppColors.blackColor
+                                              .withOpacity(0.8)),
+                                    ),
+                                    subtitle: Row(
+                                      children: [
+                                        RatingBar.builder(
+                                          glow: false,
+                                          initialRating: widget.ratingValue,
+                                          minRating: 1,
+                                          itemSize: 20,
+                                          direction: Axis.horizontal,
+                                          allowHalfRating: true,
+                                          itemCount: 5,
+                                          itemPadding:
+                                              const EdgeInsets.symmetric(
+                                                  horizontal: 1.0),
+                                          itemBuilder: (context, _) =>
+                                              const Icon(Icons.star,
+                                                  color: Colors.amber, size: 5),
+                                          onRatingUpdate: (rating) {
+                                            setState(() {
+                                              widget.ratingValue = rating;
+                                            });
+                                            print(rating);
+                                          },
+                                        ),
+                                        Text(
+                                          widget.ratingValue.toString(),
+                                          style: Styles.circularStd(context,
+                                              fontSize: 14,
+                                              color: AppColors.blackColor
+                                                  .withOpacity(0.8)),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  "CaptureSphere Studios' booking service is a game-changer! Easy, efficient, and the resulting photos were simply stunning. Highly recommend for a seamless experience.",
+                                  style: Styles.circularStd(context,
+                                      fontSize: 14,
+                                      color: AppColors.blackColor
+                                          .withOpacity(0.8)),
+                                ),
+                              ],
+                            );
+                          },
+                        ),
+                      ),
+                      40.y,
+                      Button(
+                        color: AppColors.blue,
+                        text: 'Book Now',
+                        textcolor: AppColors.whiteColor,
+                        ontap: () {
+                          Navigate.push(context, const BookingScreen());
+                        },
+                      ),
+                      40.y,
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
