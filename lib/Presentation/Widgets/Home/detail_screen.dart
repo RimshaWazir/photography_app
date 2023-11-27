@@ -56,7 +56,7 @@ class _DetailScreenState extends State<DetailScreen> {
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
             SliverAppBar(
-              automaticallyImplyLeading: false,
+              automaticallyImplyLeading: true,
               expandedHeight: 0.24.sh,
               elevation: 0,
               backgroundColor: Colors.transparent,

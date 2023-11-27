@@ -27,4 +27,17 @@ class Styles {
         fontFamily: "Circular Std",
         fontWeight: fontWeight ?? FontWeight.w500);
   }
+
+  static TextStyle smallCircularStd(BuildContext context,
+      {double? fontSize,
+      Color? color,
+      FontWeight? fontWeight,
+      double? letterSpacing}) {
+    return TextStyle(
+        fontSize: (fontSize ?? 13.0.sp) * _textScale(context),
+        letterSpacing: letterSpacing ?? 0,
+        color: color ?? AppColors.blackColor,
+        fontFamily: "Circular Std",
+        fontWeight: fontWeight ?? FontWeight.w400);
+  }
 }
