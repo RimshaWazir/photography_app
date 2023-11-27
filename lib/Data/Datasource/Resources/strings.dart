@@ -48,10 +48,31 @@ class AppStrings {
   static const String aboutUs = "About us";
   static const String discription =
       "  CaptureSphere Studios is your gateway to unforgettable moments frozen in time. With a skilled team blending technical prowess and artistic vision, we specialize in transforming ordinary scenes into extraordinary memories. Whether it's a milestone event or a personal portrait session,";
-
   static const String less = "Show Less";
   static const String more = "Show More";
-
   static const String album = "   Portfolio & Album (12)";
   static const String reviews = "Reviews";
+
+  static const String bookingNum = "Booking #1253";
+  static const String serviceBooked = "Service Booked";
+
+  static const String success =
+      "You’ve successfully booked wedding photography service!";
+
+  static const String wedding = " Wedding photography";
+  static const String russelAddress =
+      "34 Russell Rd Shillingford St George, UK";
+  static const String pending = "            Pending";
+  static const String name = "Name";
+
+  static const String nameValue = "Wedding photography";
+  static const String rimshEmail = "rimsha.example@gmail.com";
+  static const String phoneNumber = "Phone Number";
+  static const String phoneValue = "+44 1632 960427";
+
+  static const String thrilled =
+      "Thrilled to announce that your magical day is officially reserved with us! Get ready to turn your love story into timeless moments through our lens. 📸✨";
+  static const String gotoHome = "Goto Home";
+  static const String chat = "Chat";
+  static const String dateValue = "12 Nov,2023";
 }
