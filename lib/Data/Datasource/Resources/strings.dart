@@ -62,7 +62,7 @@ class AppStrings {
   static const String wedding = " Wedding photography";
   static const String russelAddress =
       "34 Russell Rd Shillingford St George, UK";
-  static const String pending = "            Pending";
+  static const String pending = "Pending";
   static const String name = "Name";
 
   static const String nameValue = "Wedding photography";

@@ -19,7 +19,7 @@ class ServiceScreen extends StatelessWidget {
             child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.sp),
+            padding: EdgeInsets.symmetric(horizontal: 12.sp),
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               40.y,
@@ -53,7 +53,7 @@ class ServiceScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               18.y,
-              const DottedBorderBox(),
+              SizedBox(height: 0.7.sh, child: const DottedBorderBox()),
               40.y,
               Row(
                 children: [
