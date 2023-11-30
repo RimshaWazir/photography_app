@@ -255,23 +255,23 @@ class _DetailScreenState extends State<DetailScreen> {
                         ),
                       ),
                       20.y,
-                      RatingRow(
+                      const RatingRow(
                         value: 5.0,
                         text: "(543 reviews)",
                       ),
-                      RatingRow(
+                      const RatingRow(
                         value: 4.0,
                         text: "(231 reviews)",
                       ),
-                      RatingRow(
+                      const RatingRow(
                         value: 3.0,
                         text: "(167 reviews)",
                       ),
-                      RatingRow(
+                      const RatingRow(
                         value: 2.0,
                         text: "(82 reviews)",
                       ),
-                      RatingRow(
+                      const RatingRow(
                         value: 1.0,
                         text: "(14 reviews)",
                       ),
@@ -382,9 +382,9 @@ class _DetailScreenState extends State<DetailScreen> {
 }
 
 class RatingRow extends StatelessWidget {
-  double? value;
-  String? text;
-  RatingRow({
+  final double? value;
+  final String? text;
+  const RatingRow({
     this.value,
     this.text,
     super.key,

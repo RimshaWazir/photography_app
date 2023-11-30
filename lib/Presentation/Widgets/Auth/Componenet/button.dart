@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Button extends StatelessWidget {
-  Function() ontap;
-  BoxBorder? border;
-  String text;
-  Color color;
-  Color textcolor;
-  Button({
+  final Function() ontap;
+  final BoxBorder? border;
+  final String text;
+  final Color color;
+  final Color textcolor;
+  const Button({
     this.border,
     required this.ontap,
     required this.color,

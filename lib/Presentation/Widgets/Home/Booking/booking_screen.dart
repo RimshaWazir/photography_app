@@ -41,7 +41,7 @@ class _BookingScreenState extends State<BookingScreen> {
     FilePickerResult? result = await FilePicker.platform.pickFiles();
 
     if (result != null) {
-      File file = File(result.files.single.path!);
+      File(result.files.single.path!);
     } else {}
   }
 

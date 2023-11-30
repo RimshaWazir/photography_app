@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:task_2/Data/Datasource/Resources/color.dart';
 
 class IconAvatar extends StatelessWidget {
-  IconData icons;
-  Function()? ontap;
-  IconAvatar({
+  final IconData icons;
+  final Function()? ontap;
+  const IconAvatar({
     required this.icons,
     this.ontap,
     super.key,
