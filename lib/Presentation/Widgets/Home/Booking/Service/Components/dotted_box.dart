@@ -76,6 +76,7 @@ class DottedBorderBox extends StatelessWidget {
                       InkWell(
                         onTap: () {},
                         child: Container(
+                          alignment: Alignment.center,
                           height: 0.025.sh,
                           width: 0.2.sw,
                           decoration: BoxDecoration(
