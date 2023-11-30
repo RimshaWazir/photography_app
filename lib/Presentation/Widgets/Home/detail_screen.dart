@@ -1,9 +1,6 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:task_2/Application/Services/Navigation/navigation.dart';
 import 'package:task_2/Data/Datasource/Extensions/extensions.dart';
 import 'package:task_2/Data/Datasource/Resources/asset.dart';
@@ -12,7 +9,6 @@ import 'package:task_2/Data/Datasource/Resources/strings.dart';
 import 'package:task_2/Data/Datasource/Resources/styles.dart';
 import 'package:task_2/Presentation/Widgets/Auth/Componenet/button.dart';
 import 'package:task_2/Presentation/Widgets/Home/Booking/booking_screen.dart';
-import 'package:task_2/Presentation/Widgets/Home/Component/icon_avatar.dart';
 
 class DetailScreen extends StatefulWidget {
   final String? selectedImage;
@@ -42,14 +38,14 @@ class _DetailScreenState extends State<DetailScreen> {
       Assets.image3,
       Assets.image4,
     ];
-    final pages = List.generate(32, (index) => const SizedBox());
-
-    Timer.periodic(const Duration(seconds: 6), (Timer timer) {
-      controller.nextPage(
-        duration: const Duration(seconds: 5),
-        curve: Curves.easeInOut,
-      );
-    });
+    // final pages = List.generate(32, (index) => const SizedBox());
+    //
+    // Timer.periodic(const Duration(seconds: 6), (Timer timer) {
+    //   controller.nextPage(
+    //     duration: const Duration(seconds: 5),
+    //     curve: Curves.easeInOut,
+    //   );
+    // });
     return Scaffold(
       body: NestedScrollView(
         physics: const BouncingScrollPhysics(),
@@ -59,6 +55,9 @@ class _DetailScreenState extends State<DetailScreen> {
               automaticallyImplyLeading: true,
               expandedHeight: 0.24.sh,
               elevation: 0,
+              snap: true,
+              floating: true,
+              pinned: true,
               backgroundColor: Colors.transparent,
               flexibleSpace: FlexibleSpaceBar(
                 background: Image.asset(

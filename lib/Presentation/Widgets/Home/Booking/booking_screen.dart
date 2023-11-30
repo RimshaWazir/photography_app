@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:task_2/Application/Services/Navigation/navigation.dart';
@@ -10,7 +11,6 @@ import 'package:task_2/Data/Datasource/Resources/strings.dart';
 import 'package:task_2/Data/Datasource/Resources/styles.dart';
 import 'package:task_2/Presentation/Common/custom_text_field.dart';
 import 'package:task_2/Presentation/Widgets/Auth/Componenet/button.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:task_2/Presentation/Widgets/Home/Booking/service/service.dart';
 
 class BookingScreen extends StatefulWidget {
@@ -51,6 +51,38 @@ class _BookingScreenState extends State<BookingScreen> {
 
     final List<String> options = ['Fashion', 'Dress', 'Shoes', 'Jewellery'];
     return Scaffold(
+      appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          foregroundColor: Colors.transparent,
+          elevation: 0,
+          automaticallyImplyLeading: false,
+          actions: [
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 12.sp),
+              width: MediaQuery.sizeOf(context).width,
+              child: Row(
+                children: [
+                  Text(AppStrings.booking,
+                      style: Styles.circularStd(
+                        context,
+                        fontSize: 20,
+                      )),
+                  const Spacer(),
+                  IconButton(
+                      onPressed: () {
+                        Navigate.pop(
+                          context,
+                        );
+                      },
+                      icon: Icon(
+                        Icons.close,
+                        color: Colors.black,
+                        size: 24.sp,
+                      ))
+                ],
+              ),
+            ),
+          ]),
       body: SafeArea(
         child: Form(
           child: SingleChildScrollView(
@@ -59,26 +91,6 @@ class _BookingScreenState extends State<BookingScreen> {
               padding: const EdgeInsets.all(20.0),
               child: Column(
                 children: [
-                  Row(
-                    children: [
-                      Text(AppStrings.booking,
-                          style: Styles.circularStd(
-                            context,
-                            fontSize: 20,
-                          )),
-                      const Spacer(),
-                      IconButton(
-                          onPressed: () {
-                            Navigate.pop(
-                              context,
-                            );
-                          },
-                          icon: Icon(
-                            Icons.close,
-                            size: 24.sp,
-                          ))
-                    ],
-                  ),
                   30.y,
                   CustomTextField(
                       prefixIcon: const Icon(Icons.person),
